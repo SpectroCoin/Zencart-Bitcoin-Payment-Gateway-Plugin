@@ -215,7 +215,7 @@ class spectrocoin extends base{
         // Default values
         $apiUrl = '';
         $apiProjectId = '';
-        $apiMerchantId = '';
+        $apiuserId = '';
         $apiPrivateKey = '';
         $receiveCurrency = 'BTC';
         $paymentMethod = '';
@@ -232,7 +232,7 @@ class spectrocoin extends base{
                     $apiProjectId = $row['configuration_value'];
                     break;
                 case 'MODULE_PAYMENT_SPECTROCOIN_MERCHANT_ID':
-                    $apiMerchantId = $row['configuration_value'];
+                    $apiuserId = $row['configuration_value'];
                     break;
                 case 'MODULE_PAYMENT_SPECTROCOIN_PRIVATE_KEY':
                     $apiPrivateKey = $row['configuration_value'];
@@ -253,13 +253,13 @@ class spectrocoin extends base{
         }
 
         // Initialize client
-        $client = new SCMerchantClient($apiUrl, $apiMerchantId, $apiProjectId, false);
+        $client = new SCMerchantClient($apiUrl, $apiuserId, $apiProjectId, false);
         $client->setPrivateMerchantKey($apiPrivateKey);
 
         $options = array(
             'apiUrl' => $apiUrl,
             'apiProjectId' => $apiProjectId,
-            'apiMerchantId' => $apiMerchantId,
+            'apiuserId' => $apiuserId,
             'apiPrivateKey' => $apiPrivateKey,
             'receiveCurrency' => $receiveCurrency,
             'paymentMethod' => $paymentMethod,
